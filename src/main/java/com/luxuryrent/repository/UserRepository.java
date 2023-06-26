@@ -1,15 +1,11 @@
 package com.luxuryrent.repository;
 
-import com.luxuryrent.domain.User;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import com.luxuryrent.user.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
-    User findByUsername(String username);
-    User findByUsernameAndPassword(String username, String password);
+import java.util.Optional;
 
-    boolean existsByUsername(String username);
+public interface UserRepository extends JpaRepository<User,Integer> {
 
-    boolean existsByEmail(String email);
+    Optional<User> findAllByEmail(String email);
 }
